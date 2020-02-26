@@ -1,6 +1,5 @@
 package br.com.javacore.Fmodificadorestatico.test;
 
-
 import br.com.javacore.Fmodificadorestatico.classes.Cliente;
 
 public class ClienteTest {
