@@ -5,6 +5,7 @@ import br.com.javacore.Gassociacao.classes.Local;
 import br.com.javacore.Gassociacao.classes.Professor;
 import br.com.javacore.Gassociacao.classes.Seminario;
 
+ // Lembrar que em associacao usa-se o termo "tem um ". EX: Seminario tem um Local , Aluno tem um Seminario
 
 public class AssociacaoTest {
     public static void main(String[] args) {

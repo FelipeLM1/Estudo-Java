@@ -32,7 +32,12 @@ public class Seminario {
         } else {
             System.out.println("Nenhum aluno cadastrado! ");
         }
-        System.out.println("PROFESSOR : " + this.professor.getNomeProf());
+        if (this.professor != null) {
+            System.out.println("PROFESSOR : " + this.professor.getNomeProf());
+        }
+        else{
+            System.out.println("NENHUM PROFESSOR CADASTRADO");
+        }
         if (this.local != null) {
             System.out.println("LOCAL : " + this.local.getRua() + "\nBAIRRO: " + this.local.getBairro());
         } else {
