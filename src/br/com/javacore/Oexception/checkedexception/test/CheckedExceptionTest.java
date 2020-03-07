@@ -6,11 +6,7 @@ import java.io.IOException;
 
 public class CheckedExceptionTest {
     public static void main(String[] args) {
-        try {
-            criarArquivo();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            abrirArquivo();
     }
 
     //IOException
@@ -22,6 +18,20 @@ public class CheckedExceptionTest {
         } catch (IOException e) {
             e.printStackTrace();
             throw e;
+        }
+
+    }
+    public static void abrirArquivo() {
+        try {
+            System.out.println("Abrindo arquivo");
+            System.out.println("Executando leitura");
+            throw new Exception();
+            //System.out.println("Escrevendo no arquivo");
+        } catch (Exception e) {
+            System.out.println("Dentro do Catch");
+            e.printStackTrace();
+        }finally {
+            System.out.println("Fechar o arquivo");
         }
 
     }
