@@ -5,5 +5,7 @@ import br.com.javacore.Oexception.customexception.LoginInvalidoException;
 import java.io.FileNotFoundException;
 
 public class Pessoa {
-    public void salvar() throws LoginInvalidoException, FileNotFoundException;
+    public void salvar() throws LoginInvalidoException, FileNotFoundException {
+
+    }
 }

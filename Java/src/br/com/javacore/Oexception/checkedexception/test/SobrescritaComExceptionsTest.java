@@ -8,6 +8,6 @@ public class SobrescritaComExceptionsTest {
         Funcionario f = new Funcionario();
         Pessoa p = new Pessoa();
 
-        p.salvar();
+       // p.salvar();
     }
 }
