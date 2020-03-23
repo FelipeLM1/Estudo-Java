@@ -31,5 +31,10 @@ public class CodeblogController {
         mv.addObject("post",post);
         return mv;
     }
+
+    @RequestMapping(value = "/newpost", method = RequestMethod.GET)
+    public String getPostForm(){
+        return "postForm";
+    }
 }
 
