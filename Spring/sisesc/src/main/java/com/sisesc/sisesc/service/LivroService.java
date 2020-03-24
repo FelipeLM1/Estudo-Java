@@ -9,6 +9,6 @@ public interface LivroService {
     List<Livro> findAll();
     Livro findById(long idLivro);
     Livro save(Livro livro);
-
+    void deleteById(Long id);
 
 }

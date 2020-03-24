@@ -4,7 +4,6 @@ import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.model.Livro;
 import com.sisesc.sisesc.repository.AlunoRepository;
 import com.sisesc.sisesc.repository.LivroRepository;
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToStdout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +20,7 @@ public class DummyData {
     @Autowired
     AlunoRepository alunoRepository;
 
-    @PostConstruct
+    //@PostConstruct
     public void saveData() {
 
         List<Livro> livroList = new ArrayList<>();
@@ -37,10 +36,12 @@ public class DummyData {
         livro2.setCategoria("FISICA");
 
 
+
         Livro livro3 = new Livro();
         livro3.setTitulo("Fisica 3: Eletromagnetismo");
         livro3.setAutor("Halliday");
         livro3.setCategoria("FISICA");
+
 
         livroList.add(livro1);
         livroList.add(livro2);
@@ -61,7 +62,6 @@ public class DummyData {
 
         alunoList.add(aluno1);
         alunoList.add(aluno2);
-
 
         for(Aluno aluno: alunoList){
             Aluno alunoSaved = alunoRepository.save(aluno);

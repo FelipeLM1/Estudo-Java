@@ -22,6 +22,7 @@ public class Livro {
     @NotBlank
     private String categoria;
 
+
     public Long getIdLivro() {
         return idLivro;
     }

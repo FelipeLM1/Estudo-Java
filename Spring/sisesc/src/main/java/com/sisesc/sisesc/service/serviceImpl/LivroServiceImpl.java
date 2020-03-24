@@ -28,4 +28,8 @@ public class LivroServiceImpl implements LivroService {
     public Livro save(Livro livro) {
         return livroRepository.save(livro);
     }
+
+    public void deleteById(Long id) {
+        livroRepository.deleteById(id);
+    }
 }
