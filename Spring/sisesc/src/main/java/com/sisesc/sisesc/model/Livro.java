@@ -1,5 +1,7 @@
 package com.sisesc.sisesc.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -18,17 +20,14 @@ public class Livro {
     private String autor;
 
     @NotBlank
-    private int QuantidadeDisponivel;
-
-    @NotBlank
-    private String Categoria;
+    private String categoria;
 
     public Long getIdLivro() {
         return idLivro;
     }
 
-    public void setIdLivro(Long id) {
-        this.idLivro = id;
+    public void setIdLivro(Long idLivro) {
+        this.idLivro = idLivro;
     }
 
     public String getTitulo() {
@@ -47,19 +46,12 @@ public class Livro {
         this.autor = autor;
     }
 
-    public int getQuantidadeDisponivel() {
-        return QuantidadeDisponivel;
-    }
-
-    public void setQuantidadeDisponivel(int quantidadeDisponivel) {
-        QuantidadeDisponivel = quantidadeDisponivel;
-    }
 
     public String getCategoria() {
-        return Categoria;
+        return categoria;
     }
 
     public void setCategoria(String categoria) {
-        Categoria = categoria;
+        this.categoria = categoria;
     }
 }

@@ -14,8 +14,6 @@ public class Aluno {
     @NotBlank
     private String nome;
 
-    private Livro[] livrosEmprestados = new Livro[3];
-
     public Long getIdAluno() {
         return idAluno;
     }
@@ -32,11 +30,4 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public Livro[] getLivrosEmprestados() {
-        return livrosEmprestados;
-    }
-
-    public void setLivrosEmprestados(Livro[] livrosEmprestados) {
-        this.livrosEmprestados = livrosEmprestados;
-    }
 }
