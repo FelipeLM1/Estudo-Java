@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8"/>
     <title>SISESC</title>
@@ -45,7 +45,7 @@
                 <li class="breadcrumb-item active" aria-current="page">Novo Livro</li>
             </ol>
         </nav>
-        <div>
+        <div sec:authorize="hasRole('ADMIN')">
             <th:block th:include="mensagemValidacao"></th:block>
             <form method="post">
                 <div class="form-group">
@@ -71,3 +71,4 @@
     </div>
 </section>
 </body>
+</html>

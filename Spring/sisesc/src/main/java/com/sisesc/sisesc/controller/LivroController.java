@@ -21,6 +21,12 @@ public class LivroController {
     @Autowired
     LivroService livroService;
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView home() {
+        ModelAndView mv = new ModelAndView("home");
+        return mv;
+    }
+
     @RequestMapping(value = "/livros", method = RequestMethod.GET)
     public ModelAndView getLivros() {
         ModelAndView mv = new ModelAndView("livros");
