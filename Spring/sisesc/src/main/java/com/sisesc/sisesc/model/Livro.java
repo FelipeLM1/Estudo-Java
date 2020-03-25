@@ -1,9 +1,9 @@
 package com.sisesc.sisesc.model;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "TB_LIVRO")
@@ -22,6 +22,16 @@ public class Livro {
     @NotBlank
     private String categoria;
 
+    @Min(0)
+    private Long quantidadeDisponivel;
+
+    public Long getQuantidadeDisponivel() {
+        return quantidadeDisponivel;
+    }
+
+    public void setQuantidadeDisponivel(Long quantidadeDisponivel) {
+        this.quantidadeDisponivel = quantidadeDisponivel;
+    }
 
     public Long getIdLivro() {
         return idLivro;
@@ -46,7 +56,6 @@ public class Livro {
     public void setAutor(String autor) {
         this.autor = autor;
     }
-
 
     public String getCategoria() {
         return categoria;

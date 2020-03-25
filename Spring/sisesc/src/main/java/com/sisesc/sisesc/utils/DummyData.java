@@ -29,24 +29,19 @@ public class DummyData {
         livro1.setAutor("Halliday");
         livro1.setCategoria("FISICA");
 
-
         Livro livro2 = new Livro();
         livro2.setTitulo("Fisica 2: Ondas e Termodinamica");
         livro2.setAutor("Halliday");
         livro2.setCategoria("FISICA");
-
-
 
         Livro livro3 = new Livro();
         livro3.setTitulo("Fisica 3: Eletromagnetismo");
         livro3.setAutor("Halliday");
         livro3.setCategoria("FISICA");
 
-
         livroList.add(livro1);
         livroList.add(livro2);
         livroList.add(livro3);
-
 
         for(Livro livro: livroList){
             Livro livroSaved = livroRepository.save(livro);
