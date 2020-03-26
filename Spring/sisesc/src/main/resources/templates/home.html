@@ -30,7 +30,7 @@
                     <a class="nav-link" href="#">Alunos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a sec:authorize="isAuthenticated()"  href="/logout" class="nav-link" >LOGOUT</a>
                 </li>
             </ul>
         </div>
@@ -39,7 +39,7 @@
 <section>
     <div class="card text-center">
         <div class="card-header">
-            SISESC
+            BEM VINDO AO SISESC
         </div>
         <div sec:authorize="isAnonymous()" class="card-body">
             <h5 class="card-title">Sistema escolar</h5>

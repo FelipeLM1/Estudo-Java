@@ -33,7 +33,8 @@
                     <a class="nav-link" href="#">Alunos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a sec:authorize="isAnonymous()" href="/login" class="nav-link">LOGIN</a>
+                    <a sec:authorize="isAuthenticated()" href="/logout" class="nav-link">LOGOUT</a>
                 </li>
             </ul>
         </div>
@@ -72,6 +73,7 @@
                 <td th:text="${livro.quantidadeDisponivel}"></td>
                 <td>
                     <div sec:authorize="hasRole('ADMIN')" class="btn-group pull-right">
+                        <a class="delete btn btn-sm btn-info" th:href="@{/editlivro/{id}(id=${livro.idLivro})}">Editar</a>
                         <a class="delete btn btn-sm btn-danger" th:href="@{/deletelivro/{id}(id=${livro.idLivro})}">Excluir</a>
                     </div>
                 </td>
