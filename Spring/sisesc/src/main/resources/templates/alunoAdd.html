@@ -30,26 +30,37 @@
                     <a class="nav-link" href="#">Alunos</a>
                 </li>
                 <li class="nav-item">
+                    <a sec:authorize="isAnonymous()" href="/login" class="nav-link">LOGIN</a>
                     <a sec:authorize="isAuthenticated()" href="/logout" class="nav-link">LOGOUT</a>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
+
 <section>
-    <div class="card text-center">
-        <div class="card-header">
-            BEM VINDO AO SISESC
-        </div>
-        <div sec:authorize="isAnonymous()" class="card-body">
-            <h5 class="card-title">Sistema escolar</h5>
-            <p class="card-text">Faça o login para continuar</p>
-            <a href="/login" class="btn btn-primary">LOGIN</a>
-            <a href="/newaluno" class="btn btn-primary">CADASTRAR-SE</a>
-        </div>
-        <div sec:authorize="isAuthenticated()" class="card-body">
-            <h5 class="card-title">Sistema escolar</h5>
-            <p class="card-text">Seja Bem vindo</p>
+
+    <div class="container" style="width: 60%; padding-bottom: 30px;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                <li class="breadcrumb-item"><a href="/">Livros</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
+            </ol>
+        </nav>
+        <div sec:authorize="isAnonymous()">
+            <th:block th:include="mensagemValidacao"></th:block>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="nome" placeholder="Nome *">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="senha" placeholder="Senha *">
+                </div>
+                <small class="form-text text-muted">(*) Campos obrigatórios</small>
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Cadastrar</button>
+                <a href="/" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+
+            </form>
         </div>
     </div>
 </section>

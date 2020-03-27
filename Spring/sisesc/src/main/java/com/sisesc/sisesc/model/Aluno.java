@@ -14,6 +14,9 @@ public class Aluno {
     @NotBlank
     private String nome;
 
+    @NotBlank
+    private String senha;
+
     public Long getIdAluno() {
         return idAluno;
     }
@@ -30,4 +33,11 @@ public class Aluno {
         this.nome = nome;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 }

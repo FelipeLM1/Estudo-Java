@@ -3,7 +3,6 @@ package com.sisesc.sisesc.model;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "TB_LIVRO")

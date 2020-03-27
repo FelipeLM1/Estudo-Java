@@ -16,7 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/livros","/").permitAll().
+        http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/livros","/","/newaluno").permitAll().
                 anyRequest().authenticated().and().formLogin().permitAll()
                 .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
     }

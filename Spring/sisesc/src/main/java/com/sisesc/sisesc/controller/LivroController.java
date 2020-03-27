@@ -1,18 +1,15 @@
 package com.sisesc.sisesc.controller;
 
 import com.sisesc.sisesc.model.Livro;
-import com.sisesc.sisesc.repository.LivroRepository;
 import com.sisesc.sisesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 
 import javax.validation.Valid;
 import java.util.List;
@@ -58,17 +55,17 @@ public class LivroController {
     }
 
     @RequestMapping(value = "/editlivro/{id}", method = RequestMethod.POST)
-    public String updateUser(@PathVariable("id") Long id, @Valid Livro livro,
-                             BindingResult result, RedirectAttributes attributes) {
-        livro.setIdLivro(id);
+    public String updateUser(@PathVariable("id") Long id, @Valid Livro livro, BindingResult result, RedirectAttributes attributes) {
+
+
         if (result.hasErrors()) {
             attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatorios foram preenchidos! ");
-            return "redirect:/update-livro";
+            return "redirect:/editlivro/{id}";
         }
+        livro.setIdLivro(id);
         livroService.save(livro);
         return "redirect:/livros";
     }
-
 
     @RequestMapping(value = "/deletelivro/{id}", method = RequestMethod.GET)
     public String deleteLivro(@PathVariable("id") Long id) {
@@ -77,6 +74,4 @@ public class LivroController {
 
         return "redirect:/livros";
     }
-
-
 }
