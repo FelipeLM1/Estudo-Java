@@ -60,7 +60,7 @@ public class DummyData {
 
         for(Aluno aluno: alunoList){
             Aluno alunoSaved = alunoRepository.save(aluno);
-            System.out.println(alunoSaved.getIdAluno());
+            System.out.println(alunoSaved.getLogin());
         }
     }
 }

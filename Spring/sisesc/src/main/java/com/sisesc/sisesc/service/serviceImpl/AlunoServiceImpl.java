@@ -20,12 +20,16 @@ public class AlunoServiceImpl implements AlunoService {
     }
 
     @Override
-    public Aluno findById(long idAluno) {
+    public Aluno findById(Long idAluno) {
         return alunoRepository.findById(idAluno).get();
     }
 
     @Override
     public Aluno save(Aluno aluno) {
         return alunoRepository.save(aluno);
+    }
+
+    public void deleteById(Long id) {
+        alunoRepository.deleteById(id);
     }
 }

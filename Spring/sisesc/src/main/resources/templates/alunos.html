@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
 <head>
     <meta charset="UTF-8"/>
     <title>SISESC</title>
@@ -10,7 +14,6 @@
 </head>
 
 <body>
-
 <header>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">SISESC</a>
@@ -43,33 +46,34 @@
     <div class="container" style="width: 60%; padding-bottom: 30px;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
-                <li class="breadcrumb-item"><a href="/livros">Livros</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Novo Livro</li>
+                <li class="breadcrumb-item active" aria-current="page">Livros</li>
             </ol>
         </nav>
-        <div sec:authorize="hasRole('ADMIN')">
-            <th:block th:include="mensagemValidacao"></th:block>
-            <form method="post">
-                <div class="form-group">
-                    <input type="text" class="form-control" name="titulo" placeholder="Título *">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="autor" placeholder="Autor *">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="categoria" placeholder="Categoria *">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="quantidadeDisponivel" placeholder="Quantidade *">
-                </div>
-                <small class="form-text text-muted">(*) Campos obrigatórios</small>
 
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Adicionar</button>
-                <a href="/livros" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+        <table class="table table-dark">
+            <thead>
+            <tr sec:authorize="hasRole('ADMIN')">
+                <th scope="col"><a href="/newaluno" class="btn btn-primary btn-lg active" role="button"
+                                   aria-pressed="true">Adicionar</a></th>
+            </tr>
+            <tr>
+                <th scope="col">Login</th>
+                <th scope="col">Nome</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aluno: ${alunos}">
+                <th th:text="${aluno.login}"></th>
+                <td th:text="${aluno.nome}"></td>
+                <td>
+                    <div sec:authorize="hasRole('ADMIN')" class="btn-group pull-right">
+                        <a class="delete btn btn-sm btn-danger" th:href="@{/deletealuno/{id}(id=${aluno.idAluno})}">Excluir</a>
 
-            </form>
-        </div>
-
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 </body>
