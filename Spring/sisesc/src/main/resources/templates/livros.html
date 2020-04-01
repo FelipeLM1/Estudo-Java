@@ -72,6 +72,11 @@
                 <td th:text="${livro.categoria}"></td>
                 <td th:text="${livro.quantidadeDisponivel}"></td>
                 <td>
+                    <div sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="btn-group pull-right">
+                        <a class="delete btn btn-sm btn-info">Pegar</a>
+                        <a class="delete btn btn-sm btn-danger" >Devolver</a>
+                    </div>
+
                     <div sec:authorize="hasRole('ADMIN')" class="btn-group pull-right">
                         <a class="delete btn btn-sm btn-info" th:href="@{/editlivro/{id}(id=${livro.idLivro})}">Editar</a>
                         <a class="delete btn btn-sm btn-danger" th:href="@{/deletelivro/{id}(id=${livro.idLivro})}">Excluir</a>

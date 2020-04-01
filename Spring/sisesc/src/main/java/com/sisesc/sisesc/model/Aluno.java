@@ -1,9 +1,11 @@
 package com.sisesc.sisesc.model;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 
@@ -26,6 +28,18 @@ public class Aluno implements UserDetails {
 
     @NotBlank
     private String senha;
+
+    private Long[] livrosEmprestados = {0L,0L,0L};
+
+    public Long[] getLivrosEmprestados() {
+        return livrosEmprestados;
+    }
+
+    public void setLivrosEmprestados(Long[] livrosEmprestados) {
+        this.livrosEmprestados = livrosEmprestados;
+    }
+
+
 
 
     public Long getIdAluno() {

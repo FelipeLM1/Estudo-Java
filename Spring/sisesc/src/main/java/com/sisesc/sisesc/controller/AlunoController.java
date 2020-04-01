@@ -4,6 +4,7 @@ import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.model.Livro;
 import com.sisesc.sisesc.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Controller
@@ -36,11 +36,12 @@ public class AlunoController {
     }
 
     @RequestMapping(value = "/newaluno", method = RequestMethod.POST)
-    public String addAluno(@Valid Aluno aluno, BindingResult result, RedirectAttributes attributes)  {
+    public String addAluno(@Valid Aluno aluno, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
             attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatorios foram preenchidos! ");
             return "redirect:/newaluno";
         }
+        aluno.setSenha(new BCryptPasswordEncoder().encode(aluno.getSenha()));
         alunoService.save(aluno);
         return "redirect:/alunos";
     }

@@ -57,12 +57,14 @@
                                    aria-pressed="true">Adicionar</a></th>
             </tr>
             <tr>
+                <th scope="col">Id</th>
                 <th scope="col">Login</th>
                 <th scope="col">Nome</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="aluno: ${alunos}">
+                <th th:text="${aluno.idAluno}"></th>
                 <th th:text="${aluno.login}"></th>
                 <td th:text="${aluno.nome}"></td>
                 <td>
