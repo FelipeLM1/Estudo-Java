@@ -1,19 +1,16 @@
 package com.sisesc.sisesc.model;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Entity
 @Table(name = "TB_ALUNO")
 public class Aluno implements UserDetails {
-
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,9 +24,10 @@ public class Aluno implements UserDetails {
     private String nome;
 
     @NotBlank
+    @Size(min=4)
     private String senha;
 
-    private Long[] livrosEmprestados = {0L,0L,0L};
+    private Long[] livrosEmprestados = new Long[3];
 
     public Long[] getLivrosEmprestados() {
         return livrosEmprestados;
@@ -38,8 +36,6 @@ public class Aluno implements UserDetails {
     public void setLivrosEmprestados(Long[] livrosEmprestados) {
         this.livrosEmprestados = livrosEmprestados;
     }
-
-
 
 
     public Long getIdAluno() {

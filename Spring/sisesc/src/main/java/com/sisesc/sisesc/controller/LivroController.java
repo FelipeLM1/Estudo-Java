@@ -1,8 +1,10 @@
 package com.sisesc.sisesc.controller;
 
+import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.model.Livro;
 import com.sisesc.sisesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -73,5 +76,28 @@ public class LivroController {
         livroService.deleteById(id);
 
         return "redirect:/livros";
+    }
+
+//    @RequestMapping(value = "/emprestarlivro/{id}", method = RequestMethod.GET)
+//    public String emprestarLivro(@PathVariable("id") Long id, Aluno aluno, RedirectAttributes attributes, Principal principal) {
+//        Livro livro;
+//        System.out.println(principal.getName());
+//        livro = livroService.findById(id);
+//        System.out.println(aluno.getNome());
+//        System.out.println(livro.getTitulo());
+//        if (livro.getQuantidadeDisponivel() > 0) {
+//            aluno.setLivrosEmprestados(new Long[]{id, id, id});
+//            livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1);
+//            attributes.addFlashAttribute("mensagem2", "Livro adicionado na sua lista! ");
+//        }
+//        return "redirect:/livros";
+//    }
+
+    @RequestMapping(value = "/emprestarlivro/{id}", method = RequestMethod.GET)
+    public ModelAndView ConfirmEmprestimo(@PathVariable("id") Long id) {
+        Livro livro = livroService.findById(id);
+        ModelAndView mv = new ModelAndView("detalhe-livro");
+        mv.addObject("livro", livro);
+        return mv;
     }
 }

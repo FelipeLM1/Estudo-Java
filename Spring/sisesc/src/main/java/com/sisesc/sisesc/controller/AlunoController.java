@@ -42,6 +42,7 @@ public class AlunoController {
             return "redirect:/newaluno";
         }
         aluno.setSenha(new BCryptPasswordEncoder().encode(aluno.getSenha()));
+        aluno.setLivrosEmprestados(new Long[]{0L,0L,0L});
         alunoService.save(aluno);
         return "redirect:/alunos";
     }
@@ -53,5 +54,6 @@ public class AlunoController {
 
         return "redirect:/alunos";
     }
+
 
 }
