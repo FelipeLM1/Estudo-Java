@@ -39,12 +39,15 @@
 <section>
     <div class="card text-center">
         <div class="card-header">
-             <p th:text="${livro.categoria}"></p>
+            <p th:text="${livro.categoria}"></p>
         </div>
         <div class="card-body">
+
             <h5 class="card-title" th:text="${livro.titulo}"></h5>
             <p class="card-text" th:text="${livro.autor}"></p>
-            <a href="#" class="btn btn-primary">Confirmar emprestimo</a>
+            <a href="/livros" class="btn btn-primary">Confirmar emprestimo</a>
+            <a href="/livros" class="btn btn-primary">Cancelar</a>
+
         </div>
         <div class="card-footer text-muted">
             <p>Quantidade disponivel</p>

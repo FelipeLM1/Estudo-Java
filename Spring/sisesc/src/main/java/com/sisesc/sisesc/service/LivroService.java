@@ -7,8 +7,12 @@ import java.util.List;
 public interface LivroService {
 
     List<Livro> findAll();
+
     Livro findById(long idLivro);
+
     Livro save(Livro livro);
+
     void deleteById(Long id);
 
+    Livro getOne(Long id);
 }

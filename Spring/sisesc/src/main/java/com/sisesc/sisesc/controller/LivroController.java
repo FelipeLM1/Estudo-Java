@@ -4,7 +4,6 @@ import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.model.Livro;
 import com.sisesc.sisesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,7 +57,7 @@ public class LivroController {
     }
 
     @RequestMapping(value = "/editlivro/{id}", method = RequestMethod.POST)
-    public String updateUser(@PathVariable("id") Long id, @Valid Livro livro, BindingResult result, RedirectAttributes attributes) {
+    public String updateLivro(@PathVariable("id") Long id, @Valid Livro livro, BindingResult result, RedirectAttributes attributes) {
 
 
         if (result.hasErrors()) {
@@ -78,26 +77,28 @@ public class LivroController {
         return "redirect:/livros";
     }
 
-//    @RequestMapping(value = "/emprestarlivro/{id}", method = RequestMethod.GET)
-//    public String emprestarLivro(@PathVariable("id") Long id, Aluno aluno, RedirectAttributes attributes, Principal principal) {
-//        Livro livro;
-//        System.out.println(principal.getName());
-//        livro = livroService.findById(id);
-//        System.out.println(aluno.getNome());
-//        System.out.println(livro.getTitulo());
-//        if (livro.getQuantidadeDisponivel() > 0) {
-//            aluno.setLivrosEmprestados(new Long[]{id, id, id});
-//            livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1);
-//            attributes.addFlashAttribute("mensagem2", "Livro adicionado na sua lista! ");
-//        }
-//        return "redirect:/livros";
-//    }
-
     @RequestMapping(value = "/emprestarlivro/{id}", method = RequestMethod.GET)
     public ModelAndView ConfirmEmprestimo(@PathVariable("id") Long id) {
         Livro livro = livroService.findById(id);
         ModelAndView mv = new ModelAndView("detalhe-livro");
         mv.addObject("livro", livro);
         return mv;
+    }
+
+    @RequestMapping(value = "/emprestarlivro/{id}/", method = RequestMethod.POST)
+    public String emprestarLivro(@PathVariable("id") Long id) {
+        livroService.getOne(id);
+        System.out.println(livroService.getOne(id));
+        Long quantidade = livroService.getOne(id).getQuantidadeDisponivel();
+        livroService.getOne(id).setQuantidadeDisponivel(quantidade - 1);
+//        System.out.println(aluno.getNome());
+//        System.out.println(livro.getTitulo());
+//        if (livro.getQuantidadeDisponivel() > 0) {
+//            aluno.setLivrosEmprestados(new Long[]{id, id, id});
+//            livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1);
+//
+//        }
+        livroService.save(livroService.getOne(id));
+        return "redirect:/livros";
     }
 }

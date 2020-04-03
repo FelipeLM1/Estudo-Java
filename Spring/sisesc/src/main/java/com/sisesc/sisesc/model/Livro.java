@@ -3,6 +3,7 @@ package com.sisesc.sisesc.model;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TB_LIVRO")
@@ -62,5 +63,33 @@ public class Livro {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "idLivro=" + idLivro +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", categoria='" + categoria + '\'' +
+                ", quantidadeDisponivel=" + quantidadeDisponivel +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Livro livro = (Livro) o;
+        return Objects.equals(idLivro, livro.idLivro) &&
+                Objects.equals(titulo, livro.titulo) &&
+                Objects.equals(autor, livro.autor) &&
+                Objects.equals(categoria, livro.categoria) &&
+                Objects.equals(quantidadeDisponivel, livro.quantidadeDisponivel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idLivro, titulo, autor, categoria, quantidadeDisponivel);
     }
 }

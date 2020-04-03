@@ -32,4 +32,9 @@ public class LivroServiceImpl implements LivroService {
     public void deleteById(Long id) {
         livroRepository.deleteById(id);
     }
+
+    @Override
+    public Livro getOne(Long id) {
+        return livroRepository.getOne(id);
+    }
 }

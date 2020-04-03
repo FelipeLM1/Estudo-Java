@@ -16,7 +16,7 @@ public class Aluno implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idAluno;
 
-    @Column(unique=true)
+    @Column(unique = true)
     @NotBlank
     private String login;
 
@@ -24,7 +24,7 @@ public class Aluno implements UserDetails {
     private String nome;
 
     @NotBlank
-    @Size(min=4)
+    @Size(min = 4)
     private String senha;
 
     private Long[] livrosEmprestados = new Long[3];
