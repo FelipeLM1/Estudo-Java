@@ -1,7 +1,6 @@
 package com.sisesc.sisesc.controller;
 
 import com.sisesc.sisesc.model.Aluno;
-import com.sisesc.sisesc.model.Livro;
 import com.sisesc.sisesc.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -51,9 +50,6 @@ public class AlunoController {
     public String deleteAluno(@PathVariable("id") Long id) {
 
         alunoService.deleteById(id);
-
         return "redirect:/alunos";
     }
-
-
 }

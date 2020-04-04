@@ -1,6 +1,5 @@
 package com.sisesc.sisesc.controller;
 
-import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.model.Livro;
 import com.sisesc.sisesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -73,7 +71,6 @@ public class LivroController {
     public String deleteLivro(@PathVariable("id") Long id) {
 
         livroService.deleteById(id);
-
         return "redirect:/livros";
     }
 
@@ -91,13 +88,7 @@ public class LivroController {
         System.out.println(livroService.getOne(id));
         Long quantidade = livroService.getOne(id).getQuantidadeDisponivel();
         livroService.getOne(id).setQuantidadeDisponivel(quantidade - 1);
-//        System.out.println(aluno.getNome());
-//        System.out.println(livro.getTitulo());
-//        if (livro.getQuantidadeDisponivel() > 0) {
-//            aluno.setLivrosEmprestados(new Long[]{id, id, id});
-//            livro.setQuantidadeDisponivel(livro.getQuantidadeDisponivel() - 1);
-//
-//        }
+
         livroService.save(livroService.getOne(id));
         return "redirect:/livros";
     }

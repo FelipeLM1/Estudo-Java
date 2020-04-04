@@ -37,7 +37,6 @@ public class Aluno implements UserDetails {
         this.livrosEmprestados = livrosEmprestados;
     }
 
-
     public Long getIdAluno() {
         return idAluno;
     }
