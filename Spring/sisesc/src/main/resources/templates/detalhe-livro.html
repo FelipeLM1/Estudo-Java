@@ -45,8 +45,9 @@
 
             <h5 class="card-title" th:text="${livro.titulo}"></h5>
             <p class="card-text" th:text="${livro.autor}"></p>
-            <a href="/livros" class="btn btn-primary">Confirmar emprestimo</a>
-            <a href="/livros" class="btn btn-primary">Cancelar</a>
+            <a th:href="@{/emprestarlivro/{id}/confirmar(id=${livro.idLivro})}" class="btn btn-primary">Confirmar
+                Emprestimo</a>
+            <a th:href="@{/devolverlivro/{id}/confirmar(id=${livro.idLivro})}" class="btn btn-primary">Cancelar</a>
 
         </div>
         <div class="card-footer text-muted">

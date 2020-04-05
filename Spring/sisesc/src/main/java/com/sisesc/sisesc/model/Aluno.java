@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
@@ -70,6 +71,17 @@ public class Aluno implements UserDetails {
     }
 
     @Override
+    public String toString() {
+        return "Aluno{" +
+                "idAluno=" + idAluno +
+                ", login='" + login + '\'' +
+                ", nome='" + nome + '\'' +
+                ", senha='" + senha + '\'' +
+                ", livrosEmprestados=" + Arrays.toString(livrosEmprestados) +
+                '}';
+    }
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
@@ -103,4 +115,6 @@ public class Aluno implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
