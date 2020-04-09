@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "TB_LIVRO")
-public class Livro {
+public class Livro implements Comparable<Livro>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -91,5 +91,10 @@ public class Livro {
     @Override
     public int hashCode() {
         return Objects.hash(idLivro, titulo, autor, categoria, quantidadeDisponivel);
+    }
+
+    @Override
+    public int compareTo(Livro o) {
+        return this.idLivro.compareTo(o.getIdLivro());
     }
 }

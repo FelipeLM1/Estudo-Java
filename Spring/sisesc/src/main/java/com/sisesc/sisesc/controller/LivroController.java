@@ -1,7 +1,6 @@
 package com.sisesc.sisesc.controller;
 
 import com.sisesc.sisesc.model.Livro;
-import com.sisesc.sisesc.service.AlunoService;
 import com.sisesc.sisesc.service.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -32,6 +32,7 @@ public class LivroController {
     public ModelAndView getLivros() {
         ModelAndView mv = new ModelAndView("livros");
         List<Livro> livros = livroService.findAll();
+        Collections.sort(livros);
         mv.addObject("livros", livros);
         return mv;
     }

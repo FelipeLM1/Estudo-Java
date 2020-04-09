@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -25,6 +26,7 @@ public class AlunoController {
     public ModelAndView getAlunos() {
         ModelAndView mv = new ModelAndView("alunos");
         List<Aluno> alunos = alunoService.findAll();
+        Collections.sort(alunos);
         mv.addObject("alunos", alunos);
         return mv;
     }

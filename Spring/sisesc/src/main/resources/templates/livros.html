@@ -4,7 +4,6 @@
         xmlns:th="http://www.thymeleaf.org"
         xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
-
 <head>
     <meta charset="UTF-8"/>
     <title>SISESC</title>
@@ -28,6 +27,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/livros">Livros</a>
+                </li>
+                <li sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="nav-item" >
+                    <a class="nav-link" href="/emprestimos" >Emprestimos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/alunos">Alunos</a>
@@ -74,11 +76,12 @@
                 <td>
                     <div sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="btn-group pull-right">
                         <a class="delete btn btn-sm btn-info" th:href="@{/emprestarlivro/{id}(id=${livro.idLivro})}">Pegar</a>
-                        <a class="delete btn btn-sm btn-danger" >Devolver</a>
+                        <a class="delete btn btn-sm btn-danger">Devolver</a>
                     </div>
 
                     <div sec:authorize="hasRole('ADMIN')" class="btn-group pull-right">
-                        <a class="delete btn btn-sm btn-info" th:href="@{/editlivro/{id}(id=${livro.idLivro})}">Editar</a>
+                        <a class="delete btn btn-sm btn-info"
+                           th:href="@{/editlivro/{id}(id=${livro.idLivro})}">Editar</a>
                         <a class="delete btn btn-sm btn-danger" th:href="@{/deletelivro/{id}(id=${livro.idLivro})}">Excluir</a>
                     </div>
                 </td>

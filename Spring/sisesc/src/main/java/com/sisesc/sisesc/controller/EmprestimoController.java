@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Arrays;
+import java.util.*;
 
 @Controller
 public class EmprestimoController {
@@ -22,6 +22,24 @@ public class EmprestimoController {
 
     @Autowired
     LivroService livroService;
+
+    @RequestMapping(value = "/emprestimos", method = RequestMethod.GET)
+    public ModelAndView getEmprestimos(Livro livro, Aluno aluno, Authentication authentication) {
+
+        ModelAndView mv = new ModelAndView("emprestimos");
+        int numeroMaxDeLivro = 3;
+        aluno = (Aluno) authentication.getPrincipal();
+        Long[] idLivrosdoAluno = aluno.getLivrosEmprestados();
+        List<Livro> livros = new ArrayList<>();
+        for (int i = 0; i < numeroMaxDeLivro; i++) {
+            if (idLivrosdoAluno[i] != 0) {
+                livros.add(livroService.getOne(idLivrosdoAluno[i]));
+            }
+        }
+        Collections.sort(livros);
+        mv.addObject("livros", livros);
+        return mv;
+    }
 
     @RequestMapping(value = "/emprestarlivro/{id}", method = RequestMethod.GET)
     public ModelAndView getEmprestimo(@PathVariable("id") Long id) {
