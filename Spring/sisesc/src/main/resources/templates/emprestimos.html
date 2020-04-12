@@ -69,7 +69,7 @@
                 <td th:text="${livro.categoria}"></td>
                 <td>
                     <div sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="btn-group pull-right">
-                        <a class="delete btn btn-sm btn-danger">Devolver</a>
+                        <a class="delete btn btn-sm btn-danger" th:href="@{/devolverlivro/{id}(id=${livro.idLivro})}" >Devolver</a>
                     </div>
                 </td>
             </tr>

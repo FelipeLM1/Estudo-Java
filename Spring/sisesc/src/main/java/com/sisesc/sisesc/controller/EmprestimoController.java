@@ -77,15 +77,21 @@ public class EmprestimoController {
         return "redirect:/livros";
     }
 
-    @RequestMapping(value = "/devolverlivro/{id}/confirmar", method = RequestMethod.GET)
+    @RequestMapping(value = "/devolverlivro/{id}", method = RequestMethod.GET)
     public String devolverLivro(@PathVariable("id") Long id, Livro livro, Aluno aluno, Authentication authentication) {
 
         livro = livroService.getOne(id);
         aluno = (Aluno) authentication.getPrincipal();
-
+        Long[] livrosEmprestados = aluno.getLivrosEmprestados();
+        int livroPosicao = Arrays.binarySearch(livrosEmprestados, id);
+        livrosEmprestados[livroPosicao] = 0L;
+        aluno.setLivrosEmprestados(livrosEmprestados);
+        alunoService.save(aluno);
         Long quantidade = livro.getQuantidadeDisponivel();
         livro.setQuantidadeDisponivel(quantidade + 1);
         livroService.save(livro);
-        return "redirect:/livros";
+        System.out.println(aluno.toString());
+        System.out.println(livro.toString());
+        return "redirect:/emprestimos";
     }
 }
