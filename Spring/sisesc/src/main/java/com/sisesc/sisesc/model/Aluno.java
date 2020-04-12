@@ -11,7 +11,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "TB_ALUNO")
-public class Aluno implements UserDetails, Comparable<Aluno>{
+public class Aluno implements UserDetails, Comparable<Aluno> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

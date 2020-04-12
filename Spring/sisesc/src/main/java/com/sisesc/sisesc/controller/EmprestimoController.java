@@ -82,14 +82,20 @@ public class EmprestimoController {
 
         livro = livroService.getOne(id);
         aluno = (Aluno) authentication.getPrincipal();
+        System.out.println("aluno antes:");
+        System.out.println(aluno.toString());
         Long[] livrosEmprestados = aluno.getLivrosEmprestados();
+        Arrays.sort(livrosEmprestados);
         int livroPosicao = Arrays.binarySearch(livrosEmprestados, id);
+        System.out.println("binary search: " + livroPosicao + "livroid: " + id);
         livrosEmprestados[livroPosicao] = 0L;
+
         aluno.setLivrosEmprestados(livrosEmprestados);
         alunoService.save(aluno);
         Long quantidade = livro.getQuantidadeDisponivel();
         livro.setQuantidadeDisponivel(quantidade + 1);
         livroService.save(livro);
+        System.out.println("aluno depois: ");
         System.out.println(aluno.toString());
         System.out.println(livro.toString());
         return "redirect:/emprestimos";
