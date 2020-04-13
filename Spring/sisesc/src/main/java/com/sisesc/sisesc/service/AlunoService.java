@@ -12,5 +12,5 @@ public interface AlunoService {
 
     Aluno save(Aluno aluno);
 
-    void deleteById(Long id);
+    void deleteById(Long idAluno);
 }

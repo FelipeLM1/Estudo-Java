@@ -12,7 +12,7 @@ public interface LivroService {
 
     Livro save(Livro livro);
 
-    void deleteById(Long id);
+    void deleteById(Long idLivro);
 
-    Livro getOne(Long id);
+    Livro getOne(Long idLivro);
 }

@@ -34,7 +34,7 @@ public class LivroServiceImpl implements LivroService {
     }
 
     @Override
-    public Livro getOne(Long id) {
-        return livroRepository.getOne(id);
+    public Livro getOne(Long idLivro) {
+        return livroRepository.getOne(idLivro);
     }
 }

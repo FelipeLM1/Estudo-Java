@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "TB_LIVRO")
-public class Livro implements Comparable<Livro>{
+public class Livro implements Comparable<Livro> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

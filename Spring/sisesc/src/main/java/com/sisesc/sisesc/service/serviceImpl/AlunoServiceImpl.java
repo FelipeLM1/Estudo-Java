@@ -29,7 +29,7 @@ public class AlunoServiceImpl implements AlunoService {
         return alunoRepository.save(aluno);
     }
 
-    public void deleteById(Long id) {
-        alunoRepository.deleteById(id);
+    public void deleteById(Long idAluno) {
+        alunoRepository.deleteById(idAluno);
     }
 }
