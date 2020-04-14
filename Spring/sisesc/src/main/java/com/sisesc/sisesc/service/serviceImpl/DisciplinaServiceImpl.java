@@ -4,9 +4,11 @@ import com.sisesc.sisesc.model.Disciplina;
 import com.sisesc.sisesc.repository.DisciplinaRepository;
 import com.sisesc.sisesc.service.DisciplinaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DisciplinaServiceImpl implements DisciplinaService {
 
 

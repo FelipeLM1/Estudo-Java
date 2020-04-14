@@ -2,6 +2,7 @@ package com.sisesc.sisesc.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,8 +16,10 @@ public class Curso implements Comparable<Curso>{
     @NotBlank
     private String nomeCurso;
 
-    private List<Aluno> alunosRegistrados;
+    @ElementCollection
+    private List<Aluno> alunosRegistrados = new ArrayList<>();
 
+    @ElementCollection
     private List<Disciplina> disciplinasRegistradas;
 
     public Long getIdCurso() {

@@ -1,9 +1,7 @@
 package com.sisesc.sisesc.model;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.List;
 
 @Entity
 @Table(name = "TB_TURMA")
@@ -15,17 +13,12 @@ public class Turma {
 
     private int quantidadeDeAluno;
 
-    private Aluno[] alunosMatriculados = new Aluno[quantidadeDeAluno];
+    private Long[] idAlunos = new Long[quantidadeDeAluno];
 
     @NotEmpty
-    private Disciplina disciplina;
-
+    private Long idDisciplina;
 
     //private Professor professor;
     //private Local local;
-
-
-
-
 
 }

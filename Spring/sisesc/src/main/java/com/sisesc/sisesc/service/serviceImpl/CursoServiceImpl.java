@@ -4,9 +4,11 @@ import com.sisesc.sisesc.model.Curso;
 import com.sisesc.sisesc.repository.CursoRepository;
 import com.sisesc.sisesc.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CursoServiceImpl implements CursoService {
 
     @Autowired

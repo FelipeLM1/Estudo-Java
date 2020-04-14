@@ -15,8 +15,7 @@ public class Disciplina {
     @NotBlank
     private String nomeDisciplina;
 
-    @NotBlank
-    private Curso cursoDisciplina;
+    private Long idCursoDisciplina;
 
     public Long getIdDisciplina() {
         return idDisciplina;
@@ -34,12 +33,12 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
     }
 
-    public Curso getCursoDisciplina() {
-        return cursoDisciplina;
+    public Long getIdCursoDisciplina() {
+        return idCursoDisciplina;
     }
 
-    public void setCursoDisciplina(Curso cursoDisciplina) {
-        this.cursoDisciplina = cursoDisciplina;
+    public void setIdCursoDisciplina(Long idCursoDisciplina) {
+        this.idCursoDisciplina = idCursoDisciplina;
     }
 
     @Override
@@ -47,7 +46,7 @@ public class Disciplina {
         return "Disciplina{" +
                 "idDisciplina=" + idDisciplina +
                 ", nomeDisciplina='" + nomeDisciplina + '\'' +
-                ", cursoDisciplina=" + cursoDisciplina +
+                ", idCursoDisciplina=" + idCursoDisciplina +
                 '}';
     }
 }

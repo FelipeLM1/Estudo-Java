@@ -1,14 +1,14 @@
 package com.sisesc.sisesc.service.serviceImpl;
 
-import com.sisesc.sisesc.model.Livro;
 import com.sisesc.sisesc.model.Turma;
-import com.sisesc.sisesc.repository.LivroRepository;
 import com.sisesc.sisesc.repository.TurmaRepository;
 import com.sisesc.sisesc.service.TurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TurmaServiceImpl implements TurmaService {
 
     @Autowired
