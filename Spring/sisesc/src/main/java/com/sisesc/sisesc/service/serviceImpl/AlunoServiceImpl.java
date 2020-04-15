@@ -25,6 +25,11 @@ public class AlunoServiceImpl implements AlunoService {
     }
 
     @Override
+    public Aluno findByLogin(String login) {
+        return alunoRepository.findByLogin(login);
+    }
+
+    @Override
     public Aluno save(Aluno aluno) {
         return alunoRepository.save(aluno);
     }

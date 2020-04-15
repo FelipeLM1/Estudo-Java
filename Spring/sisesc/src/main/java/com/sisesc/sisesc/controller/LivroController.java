@@ -54,7 +54,7 @@ public class LivroController {
 
     @RequestMapping(value = "/editlivro/{id}", method = RequestMethod.GET)
     public String showEditForm(@PathVariable("id") Long id) {
-        return "update-livro";
+        return "livroEdit";
     }
 
     @RequestMapping(value = "/editlivro/{id}", method = RequestMethod.POST)

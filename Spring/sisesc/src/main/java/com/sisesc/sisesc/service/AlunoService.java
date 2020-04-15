@@ -10,6 +10,8 @@ public interface AlunoService {
 
     Aluno findById(Long idAluno);
 
+    Aluno findByLogin(String login);
+
     Aluno save(Aluno aluno);
 
     void deleteById(Long idAluno);

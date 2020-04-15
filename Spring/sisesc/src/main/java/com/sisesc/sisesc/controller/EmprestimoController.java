@@ -44,7 +44,7 @@ public class EmprestimoController {
     @RequestMapping(value = "/emprestarlivro/{id}", method = RequestMethod.GET)
     public ModelAndView getEmprestimo(@PathVariable("id") Long id) {
         Livro livro = livroService.findById(id);
-        ModelAndView mv = new ModelAndView("detalhe-livro");
+        ModelAndView mv = new ModelAndView("livroDetalhe");
         mv.addObject("livro", livro);
         return mv;
     }
