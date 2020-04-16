@@ -33,6 +33,9 @@
                     <a class="nav-link" href="/alunos">Alunos</a>
                 </li>
                 <li class="nav-item">
+                    <a sec:authorize="hasRole('ADMIN')"  class="nav-link" href="/cursos">Cursos</a>
+                </li>
+                <li class="nav-item">
                     <a sec:authorize="isAnonymous()" href="/login" class="nav-link">LOGIN</a>
                     <a sec:authorize="isAuthenticated()" href="/logout" class="nav-link">LOGOUT</a>
                 </li>
@@ -46,15 +49,15 @@
     <div class="container" style="width: 60%; padding-bottom: 30px;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
-                <li class="breadcrumb-item"><a href="/livros">Livros</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Novo Livro</li>
+                <li class="breadcrumb-item"><a href="/cursos">Cursos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Novo Curso</li>
             </ol>
         </nav>
         <div sec:authorize="hasRole('ADMIN')">
             <th:block th:include="mensagemValidacao"></th:block>
             <form method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" name="nomeDoCurso" placeholder="Nome do curso *">
+                    <input type="text" class="form-control" name="nomeCurso" placeholder="Nome do Curso *">
                 </div>
                 <small class="form-text text-muted">(*) Campos obrigatórios</small>
 

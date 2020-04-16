@@ -58,30 +58,20 @@
         <table class="table table-dark">
             <thead>
             <tr sec:authorize="hasRole('ADMIN')">
-                <th scope="col"><a th:href="@{cursos/novoCurso}" class="btn btn-primary btn-lg active" role="button"
+                <th scope="col"><a href="/novoCurso" class="btn btn-primary btn-lg active" role="button"
                                    aria-pressed="true">Adicionar</a></th>
             </tr>
             <tr>
                 <th scope="col">id</th>
-                <th scope="col">Nome curso</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Curso</th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="curso: ${cursos}">
-                <th th:text="${curso.idCurso}"></th>
-                <td th:text="${curso.nomeCurso}"></td>
-                <td>
-                    <div sec:authorize="hasRole('ADMIN')" class="btn-group pull-right">
-                        <a class="delete btn btn-sm btn-success"
-                           th:href="@{cursos/detalhes/{idCurso}(idCurso=${curso.idCurso})}">Detalhes</a>
-
-                        <a class="delete btn btn-sm btn-info">AddDisciplina</a>
-
-                        <a class="delete btn btn-sm btn-warning"
-                           th:href="@{cursos/editCurso/addAluno/{idCurso}(idCurso=${curso.idCurso})}">AddAluno</a>
-                        <a class="delete btn btn-sm btn-danger"
-                           th:href="@{cursos/deleteCurso/{idCurso}(idCurso=${curso.idCurso})}">Excluir</a>
-                    </div>
+            <tr th:each="aluno: ${alunos}">
+                <th th:text="${aluno.idAluno}"></th>
+                <td th:text="${aluno.nome}"></td>
+                <td th:text="${aluno.cursoMatriculado}"></td>
             </tr>
             </tbody>
         </table>

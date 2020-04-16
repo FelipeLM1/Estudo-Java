@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,12 +38,29 @@ public class CursoController {
         return mv;
     }
 
-    @RequestMapping(value = "/novoCurso", method = RequestMethod.GET)
+    @RequestMapping(value = "cursos/detalhes/{idCurso}", method = RequestMethod.GET)
+    public ModelAndView detalheCurso(@PathVariable("idCurso") Long idCurso) {
+        Curso curso = cursoService.findById(idCurso);
+        ModelAndView mv = new ModelAndView("cursoDetalhes");
+        mv.addObject("curso", curso);
+        return mv;
+    }
+
+    @RequestMapping(value = "cursos/detalhes/{idCurso}/listaAlunos", method = RequestMethod.GET)
+    public ModelAndView listAlunoCurso(@PathVariable("idCurso") Long id) {
+        ModelAndView mv = new ModelAndView("cursoAlunosMatriculados");
+        Curso curso = cursoService.findById(id);
+        List<Aluno> alunos = curso.getAlunosRegistrados();
+        mv.addObject("alunos", alunos);
+        return mv;
+    }
+
+    @RequestMapping(value = "cursos/novoCurso", method = RequestMethod.GET)
     public String getCursoForm() {
         return "cursoAdd";
     }
 
-    @RequestMapping(value = "/novoCurso", method = RequestMethod.POST)
+    @RequestMapping(value = "cursos/novoCurso", method = RequestMethod.POST)
     public String addCurso(Curso curso, BindingResult result, RedirectAttributes attributes) {
 
         List<Aluno> alunosList = new ArrayList<>();
@@ -78,12 +94,12 @@ public class CursoController {
         return "redirect:/livros";
     }*/
 
-    @RequestMapping(value = "/editCurso/addAluno/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "cursos/editCurso/addAluno/{id}", method = RequestMethod.GET)
     public String formAddAluno(@PathVariable("id") Long id) {
         return "cursoAddAluno";
     }
 
-    @RequestMapping(value = "/editCurso/addAluno/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "cursos/editCurso/addAluno/{id}", method = RequestMethod.POST)
     public String cursoAddAluno(@PathVariable("id") Long id, @RequestParam("loginAluno") String loginAluno) {
         // FALTA AS VALIDAÇÕES
         Curso curso = cursoService.findById(id);
@@ -91,13 +107,13 @@ public class CursoController {
         curso.getAlunosRegistrados().add(aluno);
         System.out.println(curso.getAlunosRegistrados().toString());
         cursoService.save(curso);
+        aluno.setCursoMatriculado(curso.getNomeCurso());
+        alunoService.save(aluno);
 
         return "redirect:/cursos";
     }
 
-
-
-    @RequestMapping(value = "/deleteCurso/{idCurso}", method = RequestMethod.GET)
+    @RequestMapping(value = "cursos/deleteCurso/{idCurso}", method = RequestMethod.GET)
     public String deleteCurso(@PathVariable("idCurso") Long idCurso) {
 
         cursoService.deleteById(idCurso);

@@ -28,7 +28,10 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
     @Size(min = 4)
     private String senha;
 
+    private String cursoMatriculado = " ";
+
     private Long[] livrosEmprestados = new Long[3];
+
 
     public Long[] getLivrosEmprestados() {
         return livrosEmprestados;
@@ -70,6 +73,14 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
         this.senha = senha;
     }
 
+    public String getCursoMatriculado() {
+        return cursoMatriculado;
+    }
+
+    public void setCursoMatriculado(String cursoMatriculado) {
+        this.cursoMatriculado = cursoMatriculado;
+    }
+
     @Override
     public String toString() {
         return "Aluno{" +
@@ -77,6 +88,7 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
                 ", login='" + login + '\'' +
                 ", nome='" + nome + '\'' +
                 ", senha='" + senha + '\'' +
+                ", idCursoMatriculado='" + cursoMatriculado + '\'' +
                 ", livrosEmprestados=" + Arrays.toString(livrosEmprestados) +
                 '}';
     }
