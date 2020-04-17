@@ -32,6 +32,8 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
 
     private Long[] livrosEmprestados = new Long[3];
 
+    private Long[] idTurmas = new Long[5];
+
 
     public Long[] getLivrosEmprestados() {
         return livrosEmprestados;
@@ -81,6 +83,7 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
         this.cursoMatriculado = cursoMatriculado;
     }
 
+
     @Override
     public String toString() {
         return "Aluno{" +
@@ -88,9 +91,18 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
                 ", login='" + login + '\'' +
                 ", nome='" + nome + '\'' +
                 ", senha='" + senha + '\'' +
-                ", idCursoMatriculado='" + cursoMatriculado + '\'' +
+                ", cursoMatriculado='" + cursoMatriculado + '\'' +
                 ", livrosEmprestados=" + Arrays.toString(livrosEmprestados) +
+                ", idTurmas=" + Arrays.toString(idTurmas) +
                 '}';
+    }
+
+    public Long[] getIdTurmas() {
+        return idTurmas;
+    }
+
+    public void setIdTurmas(Long[] idTurmas) {
+        this.idTurmas = idTurmas;
     }
 
     @Override

@@ -26,8 +26,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/livros">Livros</a>
                 </li>
-                <li sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="nav-item">
-                    <a class="nav-link" href="/emprestimos">Emprestimos</a>
+                <li sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="nav-item" >
+                    <a class="nav-link" href="/emprestimos" >Emprestimos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/alunos">Alunos</a>
@@ -36,33 +36,37 @@
                     <a sec:authorize="hasRole('ADMIN')"  class="nav-link" href="/cursos">Cursos</a>
                 </li>
                 <li class="nav-item">
-                    <a sec:authorize="hasRole('ADMIN')"  class="nav-link" href="/disciplinas">Disciplinas</a>
-                </li>
-                <li class="nav-item">
-                    <a sec:authorize="hasRole('ADMIN')"  class="nav-link" href="/turmas">Turmas</a>
-                </li>
-                <li class="nav-item">
+                    <a sec:authorize="isAnonymous()" href="/login" class="nav-link">LOGIN</a>
                     <a sec:authorize="isAuthenticated()" href="/logout" class="nav-link">LOGOUT</a>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
+
 <section>
-    <div class="card text-center">
-        <div class="card-header">
-            BEM VINDO AO SISESC
+
+    <div class="container" style="width: 60%; padding-bottom: 30px;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                <li class="breadcrumb-item"><a href="/cursos">Disciplinas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Nova Disciplina</li>
+            </ol>
+        </nav>
+        <div sec:authorize="hasRole('ADMIN')">
+            <th:block th:include="mensagemValidacao"></th:block>
+            <form method="post">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="nomeDisciplina" placeholder="Nome da Disciplina *">
+                </div>
+                <small class="form-text text-muted">(*) Campos obrigatórios</small>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Adicionar</button>
+                <a href="/" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+
+            </form>
         </div>
-        <div sec:authorize="isAnonymous()" class="card-body">
-            <h5 class="card-title">Sistema escolar</h5>
-            <p class="card-text">Faça o login para continuar</p>
-            <a href="/login" class="btn btn-primary">LOGIN</a>
-        </div>
-        <div sec:authorize="isAuthenticated()" class="card-body">
-            <h5 class="card-title">Sistema escolar</h5>
-            <p class="card-text">Seja Bem vindo</p>
-            <a sec:authorize="hasRole('ADMIN')" href="/newaluno" class="btn btn-primary">NOVO ALUNO</a>
-        </div>
+
     </div>
 </section>
 </body>

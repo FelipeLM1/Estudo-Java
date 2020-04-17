@@ -51,38 +51,26 @@
     <div class="container" style="width: 60%; padding-bottom: 30px;">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
-                <li class="breadcrumb-item active" aria-current="page">Cursos</li>
+                <li class="breadcrumb-item active" aria-current="page">Turmas</li>
             </ol>
         </nav>
 
         <table class="table table-dark">
             <thead>
             <tr sec:authorize="hasRole('ADMIN')">
-                <th scope="col"><a th:href="@{cursos/novoCurso}" class="btn btn-primary btn-lg active" role="button"
-                                   aria-pressed="true">Adicionar</a></th>
+                <th scope="col"><a th:href="@{turmas/novaTurma}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Adicionar</a></th>
             </tr>
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">Nome curso</th>
+                <th scope="col">id Turma</th>
+                <th scope="col">id Disciplina</th>
+
             </tr>
             </thead>
             <tbody>
-            <tr th:each="curso: ${cursos}">
-                <th th:text="${curso.idCurso}"></th>
-                <td th:text="${curso.nomeCurso}"></td>
-                <td>
-                    <div sec:authorize="hasRole('ADMIN')" class="btn-group pull-right">
-                        <a class="delete btn btn-sm btn-success"
-                           th:href="@{cursos/detalhes/{idCurso}(idCurso=${curso.idCurso})}">Detalhes</a>
+            <tr th:each="turma: ${turmas}">
+                <th th:text="${turma.idTurma}"></th>
+                <td th:text="${turma.idDisciplina}"></td>
 
-                        <a class="delete btn btn-sm btn-info" th:href="@{cursos/editCurso/addDisciplina/{idCurso}(idCurso=${curso.idCurso})}">AddDisciplina</a>
-
-                        <a class="delete btn btn-sm btn-warning"
-                           th:href="@{cursos/editCurso/addAluno/{idCurso}(idCurso=${curso.idCurso})}">AddAluno</a>
-                        <a class="delete btn btn-sm btn-danger"
-                           th:href="@{cursos/deleteCurso/{idCurso}(idCurso=${curso.idCurso})}">Excluir</a>
-                    </div>
-                </td>
             </tr>
             </tbody>
         </table>

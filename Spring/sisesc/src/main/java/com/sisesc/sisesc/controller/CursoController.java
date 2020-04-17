@@ -1,11 +1,11 @@
 package com.sisesc.sisesc.controller;
 
-
 import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.model.Curso;
 import com.sisesc.sisesc.model.Disciplina;
 import com.sisesc.sisesc.service.AlunoService;
 import com.sisesc.sisesc.service.CursoService;
+import com.sisesc.sisesc.service.DisciplinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -28,6 +28,9 @@ public class CursoController {
 
     @Autowired
     AlunoService alunoService;
+
+    @Autowired
+    DisciplinaService disciplinaService;
 
     @RequestMapping(value = "/cursos", method = RequestMethod.GET)
     public ModelAndView getCurso() {
@@ -76,23 +79,21 @@ public class CursoController {
         return "redirect:/cursos";
     }
 
-  /*  @RequestMapping(value = "/editCurso/{id}/addDisciplina", method = RequestMethod.GET)
-    public String formAddDisciplina(@PathVariable("id") Long id) {
+    @RequestMapping(value = "cursos/editCurso/addDisciplina/{idCurso}", method = RequestMethod.GET)
+    public String formAddDisciplina(@PathVariable("idCurso") Long idCurso) {
         return "cursoAddDisciplina";
     }
 
-    @RequestMapping(value = "/editCurso/{id}/addDisciplina", method = RequestMethod.POST)
-    public String cursoAddDisciplina(@PathVariable("id") Long id, @Valid Curso curso, BindingResult result, RedirectAttributes attributes) {
-        curso = cursoService.findById(id);
-
-        if (result.hasErrors()) {
-            attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatorios foram preenchidos! ");
-            return "redirect:/editlivro/{id}";
-        }
-
-        livroService.save(livro);
-        return "redirect:/livros";
-    }*/
+    @RequestMapping(value = "cursos/editCurso/addDisciplina/{idCurso}", method = RequestMethod.POST)
+    public String cursoAddDisciplina(@PathVariable("idCurso") Long idCurso, @RequestParam("idDisciplina") Long idDisciplina,  RedirectAttributes attributes) {
+        Disciplina disciplina = disciplinaService.findById(idDisciplina);
+        Curso curso = cursoService.findById(idCurso);
+        curso.getDisciplinasRegistradas().add(disciplina);
+        cursoService.save(curso);
+        disciplina.setCursoDisciplina(curso.getNomeCurso());
+        disciplinaService.save(disciplina);
+        return "redirect:/cursos";
+    }
 
     @RequestMapping(value = "cursos/editCurso/addAluno/{id}", method = RequestMethod.GET)
     public String formAddAluno(@PathVariable("id") Long id) {

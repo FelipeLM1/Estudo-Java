@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "TB_DISCIPLINA")
-public class Disciplina {
+public class Disciplina implements Comparable<Disciplina> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +15,7 @@ public class Disciplina {
     @NotBlank
     private String nomeDisciplina;
 
-    private Long idCursoDisciplina;
+    private String cursoDisciplina;
 
     public Long getIdDisciplina() {
         return idDisciplina;
@@ -33,12 +33,13 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
     }
 
-    public Long getIdCursoDisciplina() {
-        return idCursoDisciplina;
+
+    public String getCursoDisciplina() {
+        return cursoDisciplina;
     }
 
-    public void setIdCursoDisciplina(Long idCursoDisciplina) {
-        this.idCursoDisciplina = idCursoDisciplina;
+    public void setCursoDisciplina(String cursoDisciplina) {
+        this.cursoDisciplina = cursoDisciplina;
     }
 
     @Override
@@ -46,7 +47,12 @@ public class Disciplina {
         return "Disciplina{" +
                 "idDisciplina=" + idDisciplina +
                 ", nomeDisciplina='" + nomeDisciplina + '\'' +
-                ", idCursoDisciplina=" + idCursoDisciplina +
+                ", cursoDisciplina='" + cursoDisciplina + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Disciplina o) {
+        return this.getIdDisciplina().compareTo(o.idDisciplina);
     }
 }
