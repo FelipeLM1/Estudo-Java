@@ -1,14 +1,11 @@
 package com.sisesc.sisesc.model;
 
-import org.springframework.format.annotation.NumberFormat;
-
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import java.util.Arrays;
 
 @Entity
 @Table(name = "TB_TURMA")
-public class Turma implements Comparable<Turma>{
+public class Turma implements Comparable<Turma> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

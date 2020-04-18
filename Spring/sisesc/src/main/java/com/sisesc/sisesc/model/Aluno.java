@@ -32,8 +32,7 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
 
     private Long[] livrosEmprestados = new Long[3];
 
-    private Long[] idTurmas = new Long[5];
-
+    private Long[] idTurmas = {0L, 0L, 0L, 0L, 0L};
 
     public Long[] getLivrosEmprestados() {
         return livrosEmprestados;
@@ -82,7 +81,6 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
     public void setCursoMatriculado(String cursoMatriculado) {
         this.cursoMatriculado = cursoMatriculado;
     }
-
 
     @Override
     public String toString() {
@@ -139,7 +137,6 @@ public class Aluno implements UserDetails, Comparable<Aluno> {
     public boolean isEnabled() {
         return true;
     }
-
 
     @Override
     public int compareTo(Aluno o) {
