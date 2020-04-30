@@ -7,22 +7,6 @@ import java.util.Objects;
 @Entity
 @Table(name = "TB_TURMA")
 public class Turma implements Comparable<Turma> {
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Turma turma = (Turma) o;
-        return Objects.equals(idTurma, turma.idTurma) &&
-                Arrays.equals(idAlunos, turma.idAlunos) &&
-                Objects.equals(idDisciplina, turma.idDisciplina);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Objects.hash(idTurma, idDisciplina);
-        result = 31 * result + Arrays.hashCode(idAlunos);
-        return result;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,6 +15,9 @@ public class Turma implements Comparable<Turma> {
     private Long[] idAlunos = new Long[30];
 
     private Long idDisciplina;
+
+    //private Professor professor;
+    //private Local local;
 
     public Long getIdTurma() {
         return idTurma;
@@ -70,7 +57,22 @@ public class Turma implements Comparable<Turma> {
         return this.idTurma.compareTo(o.idTurma);
     }
 
-    //private Professor professor;
-    //private Local local;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Turma turma = (Turma) o;
+        return Objects.equals(idTurma, turma.idTurma) &&
+                Arrays.equals(idAlunos, turma.idAlunos) &&
+                Objects.equals(idDisciplina, turma.idDisciplina);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(idTurma, idDisciplina);
+        result = 31 * result + Arrays.hashCode(idAlunos);
+        return result;
+    }
+
 
 }
