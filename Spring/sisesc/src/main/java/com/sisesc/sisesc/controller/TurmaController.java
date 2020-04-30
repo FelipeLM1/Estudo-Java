@@ -50,7 +50,7 @@ public class TurmaController {
             return "redirect:turmas/novaTurma";
         }
         Long[] alunos = turma.getIdAlunos();
-        for (int i = 0; i<alunos.length; i++) {
+        for (int i = 0; i < alunos.length; i++) {
             alunos[i] = 0L;
         }
         turma.setIdAlunos(alunos);
@@ -65,7 +65,7 @@ public class TurmaController {
         turma = turmaService.findById(idTurma);
         Aluno aluno = (Aluno) authentication.getPrincipal();
         Long[] idTurmasAluno = aluno.getIdTurmas();
-        if(idTurmasAluno[0] == 0L) {
+        if (idTurmasAluno[0] == 0L) {
             idTurmasAluno[0] = idTurma;
         }
         Arrays.sort(idTurmasAluno);

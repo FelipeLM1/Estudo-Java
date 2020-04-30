@@ -2,10 +2,27 @@ package com.sisesc.sisesc.model;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TB_TURMA")
 public class Turma implements Comparable<Turma> {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Turma turma = (Turma) o;
+        return Objects.equals(idTurma, turma.idTurma) &&
+                Arrays.equals(idAlunos, turma.idAlunos) &&
+                Objects.equals(idDisciplina, turma.idDisciplina);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(idTurma, idDisciplina);
+        result = 31 * result + Arrays.hashCode(idAlunos);
+        return result;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
