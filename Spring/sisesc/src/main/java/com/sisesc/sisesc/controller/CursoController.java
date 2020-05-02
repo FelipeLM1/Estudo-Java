@@ -58,6 +58,16 @@ public class CursoController {
         return mv;
     }
 
+
+    @RequestMapping(value = "cursos/detalhes/{idCurso}/listaDisciplinas", method = RequestMethod.GET)
+    public ModelAndView listDisciplinaCurso(@PathVariable("idCurso") Long id) {
+        ModelAndView mv = new ModelAndView("cursoDisciplinas");
+        Curso curso = cursoService.findById(id);
+        List<Disciplina> disciplinas = curso.getDisciplinasRegistradas();
+        mv.addObject("disciplinas", disciplinas);
+        return mv;
+    }
+
     @RequestMapping(value = "cursos/novoCurso", method = RequestMethod.GET)
     public String getCursoForm() {
         return "cursoAdd";
@@ -85,7 +95,7 @@ public class CursoController {
     }
 
     @RequestMapping(value = "cursos/editCurso/addDisciplina/{idCurso}", method = RequestMethod.POST)
-    public String cursoAddDisciplina(@PathVariable("idCurso") Long idCurso, @RequestParam("idDisciplina") Long idDisciplina,  RedirectAttributes attributes) {
+    public String cursoAddDisciplina(@PathVariable("idCurso") Long idCurso, @RequestParam("idDisciplina") Long idDisciplina, RedirectAttributes attributes) {
         Disciplina disciplina = disciplinaService.findById(idDisciplina);
         Curso curso = cursoService.findById(idCurso);
         curso.getDisciplinasRegistradas().add(disciplina);

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8"/>
     <title>SISESC</title>
@@ -10,7 +13,6 @@
 </head>
 
 <body>
-
 <header>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">SISESC</a>
@@ -36,24 +38,37 @@
                     <a sec:authorize="hasRole('ADMIN')" class="nav-link" href="/cursos">Cursos</a>
                 </li>
                 <li class="nav-item">
+                    <a sec:authorize="isAnonymous()" href="/login" class="nav-link">LOGIN</a>
                     <a sec:authorize="isAuthenticated()" href="/logout" class="nav-link">LOGOUT</a>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
+
 <section>
-    <div class="card text-center">
-        <div class="card-header">
-            <p th:text="${curso.idCurso}"></p>
-        </div>
-        <div class="card-body">
 
-            <h5 class="card-title" th:text="${curso.nomeCurso}"></h5>
-            <a class="btn btn-primary" th:href="@{{idCurso}/listaAlunos(idCurso=${curso.idCurso})}">Ver lista de Alunos</a>
-            <a class="btn btn-primary" th:href="@{{idCurso}/listaDisciplinas(idCurso=${curso.idCurso})}">Ver lista de Disciplinas</a>
+    <div class="container" style="width: 60%; padding-bottom: 30px;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                <li class="breadcrumb-item active" aria-current="page">Cursos</li>
+            </ol>
+        </nav>
 
-        </div>
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nome</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="disciplina: ${disciplinas}">
+                <th th:text="${disciplina.idDisciplina}"></th>
+                <td th:text="${disciplina.nomeDisciplina}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 </body>

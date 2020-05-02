@@ -73,6 +73,4 @@ public class Turma implements Comparable<Turma> {
         result = 31 * result + Arrays.hashCode(idAlunos);
         return result;
     }
-
-
 }
