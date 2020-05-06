@@ -56,7 +56,7 @@
         <div sec:authorize="isAnonymous()" class="card-body">
             <h5 class="card-title">Sistema escolar</h5>
             <p class="card-text">Faça o login para continuar</p>
-            <a href="/login" class="btn btn-primary">LOGIN</a>
+            <a href="/home" class="btn btn-primary">LOGIN</a>
         </div>
         <div sec:authorize="isAuthenticated()" class="card-body">
             <h5 class="card-title">Sistema escolar</h5>
@@ -66,6 +66,24 @@
             <a sec:authorize="hasRole('ADMIN')" href="/newaluno" class="btn btn-primary">NOVO ALUNO</a>
         </div>
     </div>
+</section>
+
+<section sec:authorize="isAuthenticated() and not hasRole('ADMIN')">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">ID da turma</th>
+            <th scope="col">Disciplina</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aluno: ${turmas}">
+            <th scope="row"  th:text="${turma.idTurma}">1</th>
+            <td>Mark</td>
+        </tr>
+        </tbody>
+    </table>
+
 </section>
 </body>
 </html>

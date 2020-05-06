@@ -53,6 +53,8 @@ public class TurmaController {
         for (int i = 0; i < alunos.length; i++) {
             alunos[i] = 0L;
         }
+        turma.setNomeDisciplina(turmaService.findById(turma.getIdDisciplina()).getNomeDisciplina());
+
         turma.setIdAlunos(alunos);
         turmaService.save(turma);
         System.out.println(turma.toString());

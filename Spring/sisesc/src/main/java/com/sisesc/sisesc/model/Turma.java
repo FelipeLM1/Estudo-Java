@@ -16,8 +16,19 @@ public class Turma implements Comparable<Turma> {
 
     private Long idDisciplina;
 
+    private String nomeDisciplina = " ";
+
     //private Professor professor;
     //private Local local;
+
+    public String getNomeDisciplina() {
+        return nomeDisciplina;
+    }
+
+    public void setNomeDisciplina(String nomeDisciplina) {
+        this.nomeDisciplina = nomeDisciplina;
+    }
+
 
     public Long getIdTurma() {
         return idTurma;
