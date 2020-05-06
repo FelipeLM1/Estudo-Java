@@ -73,7 +73,18 @@ public class TurmaController {
         Aluno aluno = (Aluno) authentication.getPrincipal();
         Long[] idTurmasAluno = aluno.getIdTurmas();
         if (idTurmasAluno[0] == 0L) {
-            idTurmasAluno[0] = idTurma;
+            boolean turmaRepetida = false;
+            for (int i = 0; i < idTurmasAluno.length; i++) {
+                if (idTurmasAluno[i] == idTurma) {
+                    turmaRepetida = true;
+                    System.out.println("JA PERTENCE A TURMA!!!");
+                }
+            }
+            if (turmaRepetida == false){
+                idTurmasAluno[0] = idTurma;
+            }
+        }else{
+            System.out.println("O ALUNO JA TEM MUITAS TURMAS MATRICULADAS!!");
         }
         Arrays.sort(idTurmasAluno);
         aluno.setIdTurmas(idTurmasAluno);
