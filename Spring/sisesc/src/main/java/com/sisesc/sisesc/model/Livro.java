@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Livro implements Comparable<Livro> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idLivro;
 
     @NotBlank

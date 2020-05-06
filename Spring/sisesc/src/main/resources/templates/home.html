@@ -33,13 +33,13 @@
                     <a class="nav-link" href="/alunos">Alunos</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                    <a   class="nav-link" href="/cursos">Cursos</a>
+                    <a class="nav-link" href="/cursos">Cursos</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                     <a class="nav-link" href="/disciplinas">Disciplinas</a>
                 </li>
                 <li class="nav-item">
-                    <a sec:authorize="isAuthenticated()"  class="nav-link" href="/turmas">Turmas</a>
+                    <a sec:authorize="isAuthenticated()" class="nav-link" href="/turmas">Turmas</a>
                 </li>
                 <li class="nav-item">
                     <a sec:authorize="isAuthenticated()" href="/logout" class="nav-link">LOGOUT</a>
@@ -61,7 +61,7 @@
         <div sec:authorize="isAuthenticated()" class="card-body">
             <h5 class="card-title">Sistema escolar</h5>
             <div>
-                <p th:inline="text">Seja bem vindo,  [[${#httpServletRequest.remoteUser}]]!</p>
+                <p th:inline="text">Seja bem vindo, [[${#httpServletRequest.remoteUser}]]!</p>
             </div>
             <a sec:authorize="hasRole('ADMIN')" href="/newaluno" class="btn btn-primary">NOVO ALUNO</a>
         </div>
@@ -69,21 +69,22 @@
 </section>
 
 <section sec:authorize="isAuthenticated() and not hasRole('ADMIN')">
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">ID da turma</th>
-            <th scope="col">Disciplina</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="aluno: ${turmas}">
-            <th scope="row"  th:text="${turma.idTurma}">1</th>
-            <td>Mark</td>
-        </tr>
-        </tbody>
-    </table>
-
+    <div th:object="${aluno}">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ID da turma</th>
+                <th scope="col">Disciplina</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="turma: ${turmas}">
+                <th scope="row" th:text="${turma.idTurma}"></th>
+                <td th:text="${turma.nomeDisciplina}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 </body>
 </html>

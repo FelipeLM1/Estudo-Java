@@ -14,7 +14,7 @@ import java.util.Collection;
 public class Aluno implements UserDetails, Comparable<Aluno> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAluno;
 
     @Column(unique = true)

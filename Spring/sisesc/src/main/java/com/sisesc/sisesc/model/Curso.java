@@ -10,7 +10,7 @@ import java.util.List;
 public class Curso implements Comparable<Curso> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCurso;
 
     @NotBlank

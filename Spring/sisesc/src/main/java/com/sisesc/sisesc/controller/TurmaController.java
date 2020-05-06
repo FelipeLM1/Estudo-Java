@@ -3,6 +3,7 @@ package com.sisesc.sisesc.controller;
 import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.model.Turma;
 import com.sisesc.sisesc.service.AlunoService;
+import com.sisesc.sisesc.service.DisciplinaService;
 import com.sisesc.sisesc.service.TurmaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,8 @@ import java.util.List;
 
 @Controller
 public class TurmaController {
+    @Autowired
+    DisciplinaService disciplinaService;
 
     @Autowired
     TurmaService turmaService;
@@ -53,9 +56,11 @@ public class TurmaController {
         for (int i = 0; i < alunos.length; i++) {
             alunos[i] = 0L;
         }
-        turma.setNomeDisciplina(turmaService.findById(turma.getIdDisciplina()).getNomeDisciplina());
+
 
         turma.setIdAlunos(alunos);
+        turmaService.save(turma);
+        turma.setNomeDisciplina(disciplinaService.findById(turma.getIdDisciplina()).getNomeDisciplina());
         turmaService.save(turma);
         System.out.println(turma.toString());
         return "redirect:/turmas";

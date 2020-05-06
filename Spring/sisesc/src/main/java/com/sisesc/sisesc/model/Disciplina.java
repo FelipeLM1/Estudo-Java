@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 public class Disciplina implements Comparable<Disciplina> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDisciplina;
 
     @NotBlank

@@ -62,14 +62,14 @@
             </tr>
             <tr>
                 <th scope="col">id Turma</th>
-                <th scope="col">id Disciplina</th>
+                <th scope="col">Disciplina da turma</th>
 
             </tr>
             </thead>
             <tbody>
             <tr th:each="turma: ${turmas}">
                 <th th:text="${turma.idTurma}"></th>
-                <td th:text="${turma.idDisciplina}"></td>
+                <td th:text="${turma.nomeDisciplina}"></td>
                 <td>
                 <div sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="btn-group pull-right">
                     <a class="delete btn btn-sm btn-info" th:href="@{turmas/fazermatricula/{idTurma}(idTurma=${turma.idTurma})}">Matricular</a>

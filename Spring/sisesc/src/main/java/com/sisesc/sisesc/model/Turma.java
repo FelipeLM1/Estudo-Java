@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Turma implements Comparable<Turma> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTurma;
 
     private Long[] idAlunos = new Long[30];
