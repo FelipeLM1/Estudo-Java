@@ -9,6 +9,6 @@ public class SisescApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SisescApplication.class, args);
-        //	System.out.println(new BCryptPasswordEncoder().encode("123"));
+       
     }
 }
