@@ -2,6 +2,7 @@ package com.sisesc.sisesc.controller;
 
 import com.sisesc.sisesc.model.Aluno;
 import com.sisesc.sisesc.service.AlunoService;
+import com.sisesc.sisesc.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -51,6 +52,7 @@ public class AlunoController {
     @RequestMapping(value = "/deletealuno/{id}", method = RequestMethod.GET)
     public String deleteAluno(@PathVariable("id") Long id) {
 
+        Aluno aluno = alunoService.findById(id);
         alunoService.deleteById(id);
         return "redirect:/alunos";
     }

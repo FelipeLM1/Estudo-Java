@@ -81,10 +81,14 @@
             <tr th:each="turma: ${turmas}">
                 <th scope="row" th:text="${turma.idTurma}"></th>
                 <td th:text="${turma.nomeDisciplina}"></td>
+                <td><div sec:authorize="isAuthenticated() and not hasRole('ADMIN')" class="btn-group pull-right">
+                    <a class="delete btn btn-sm btn-info" >Detalhes</a>
+                </div></td>
             </tr>
             </tbody>
         </table>
     </div>
+
 </section>
 </body>
 </html>
