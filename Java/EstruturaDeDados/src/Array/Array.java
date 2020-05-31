@@ -26,15 +26,8 @@ public class Array {
         this.tamanho++;
         String aux;
         String aux2="null";
-        for(int i=posicao; i<this.tamanho; i++){
-            if(i>posicao){
-                aux = this.elementos[i+1];
-                this.elementos[i+1]= aux2;
-            }
-            aux2 = this.elementos[i+1];
-            aux = this.elementos[i];
-            this.elementos[i+1] = aux;
-            this.elementos[posicao] = elemento;
+        for(int i=this.tamanho; i >posicao; i--){
+            this.elementos[i+1] = this.elementos[i]
         }
 
 
