@@ -23,15 +23,15 @@ public class Array {
         if(!(posicao>=0 && posicao<tamanho)){
             throw new IndexOutOfBoundsException("Posição fora do array!");
         }
-        this.tamanho++;
-        String aux;
-        String aux2="null";
+
+        //mover todos os elementos
         for(int i=this.tamanho; i >posicao; i--){
-            this.elementos[i+1] = this.elementos[i]
+            this.elementos[i+1] = this.elementos[i];
         }
+        this.elementos[posicao] = elemento;
+        this.tamanho++;
 
-
-        return false;
+        return true;
     }
 
     public String busca(int posicao){
