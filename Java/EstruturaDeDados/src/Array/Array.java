@@ -19,15 +19,15 @@ public class Array {
         return false;
     }
 
-    public boolean adiciona(int posicao, String elemento){
+    public boolean adiciona(int posicao, String elemento) {
         aumentaCapacidade();
-        if(!(posicao>=0 && posicao<tamanho)){
+        if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IndexOutOfBoundsException("Posição fora do array!");
         }
 
         //mover todos os elementos
-        for(int i=this.tamanho; i >posicao; i--){
-            this.elementos[i+1] = this.elementos[i];
+        for (int i = this.tamanho; i > posicao; i--) {
+            this.elementos[i + 1] = this.elementos[i];
         }
         this.elementos[posicao] = elemento;
         this.tamanho++;
@@ -35,25 +35,48 @@ public class Array {
         return true;
     }
 
-    private void aumentaCapacidade(){
-        if(this.tamanho == this.elementos.length){
+    public void remove(int posicao) {
+        if (!(posicao >= 0 && posicao < tamanho)) {
+            throw new IllegalArgumentException("Nessa posição não existe elemento para ser removido!");
+        }
+
+        for (int i = posicao; i < this.tamanho - 1; i++) {
+            this.elementos[i] = this.elementos[i + 1];
+        }
+        this.tamanho--;
+
+    }
+
+    public void remove(String elemento) {
+        int pos = busca(elemento);
+        if (pos > -1) {
+            remove(pos);
+        } else {
+            System.out.println("Elemento não encontrado!");
+        }
+    }
+
+
+    private void aumentaCapacidade() {
+        if (this.tamanho == this.elementos.length) {
             String[] elementosNovos = new String[this.elementos.length * 2];
-            for(int i = 0 ; i< this.elementos.length ; i++){
+            for (int i = 0; i < this.elementos.length; i++) {
                 elementosNovos[i] = this.elementos[i];
             }
             this.elementos = elementosNovos;
         }
     }
 
-    public String busca(int posicao){
-        if (!(posicao>=0 && posicao<tamanho)){
+    public String busca(int posicao) {
+        if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição inválida!");
         }
-            return this.elementos[posicao];
+        return this.elementos[posicao];
     }
-    public int busca(String elemento){
-        for(int i=0; i<this.tamanho; i++){
-            if(this.elementos[i].equals(elemento)){
+
+    public int busca(String elemento) {
+        for (int i = 0; i < this.tamanho; i++) {
+            if (this.elementos[i].equals(elemento)) {
                 return i;
             }
         }
@@ -70,12 +93,12 @@ public class Array {
         StringBuilder s = new StringBuilder();
         s.append("[");
 
-        for (int i=0; i<this.tamanho-1;i++){
+        for (int i = 0; i < this.tamanho - 1; i++) {
             s.append(this.elementos[i]);
             s.append(", ");
         }
-        if(this.tamanho>0){
-            s.append(this.elementos[this.tamanho-1]);
+        if (this.tamanho > 0) {
+            s.append(this.elementos[this.tamanho - 1]);
         }
         s.append("]");
         return s.toString();
