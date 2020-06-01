@@ -1,15 +1,16 @@
 package Array;
 
-public class Array {
+public class Array<T> {
 
-    private String[] elementos;
+    private T[] elementos;
     private int tamanho;
-
+    
     public Array(int capacidade) {
-        this.elementos = new String[capacidade];
+        this.elementos = (T[]) new Object[capacidade];
+        this.tamanho = 0;
     }
 
-    public boolean adiciona(String elemento) {
+    public boolean adiciona(T elemento) {
         aumentaCapacidade();
         if (this.tamanho < this.elementos.length) {
             this.elementos[this.tamanho] = elemento;
@@ -19,7 +20,7 @@ public class Array {
         return false;
     }
 
-    public boolean adiciona(int posicao, String elemento) {
+    public boolean adiciona(int posicao, T elemento) {
         aumentaCapacidade();
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IndexOutOfBoundsException("Posição fora do array!");
@@ -47,7 +48,7 @@ public class Array {
 
     }
 
-    public void remove(String elemento) {
+    public void remove(T elemento) {
         int pos = busca(elemento);
         if (pos > -1) {
             remove(pos);
@@ -59,7 +60,7 @@ public class Array {
 
     private void aumentaCapacidade() {
         if (this.tamanho == this.elementos.length) {
-            String[] elementosNovos = new String[this.elementos.length * 2];
+            T[] elementosNovos = (T[]) new Object[this.elementos.length * 2];
             for (int i = 0; i < this.elementos.length; i++) {
                 elementosNovos[i] = this.elementos[i];
             }
@@ -67,14 +68,14 @@ public class Array {
         }
     }
 
-    public String busca(int posicao) {
+    public T busca(int posicao) {
         if (!(posicao >= 0 && posicao < tamanho)) {
             throw new IllegalArgumentException("Posição inválida!");
         }
         return this.elementos[posicao];
     }
 
-    public int busca(String elemento) {
+    public int busca(T elemento) {
         for (int i = 0; i < this.tamanho; i++) {
             if (this.elementos[i].equals(elemento)) {
                 return i;
@@ -82,7 +83,6 @@ public class Array {
         }
         return -1;
     }
-
 
     public int getTamanho() {
         return this.tamanho;
@@ -104,4 +104,3 @@ public class Array {
         return s.toString();
     }
 }
-
