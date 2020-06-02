@@ -23,5 +23,4 @@ public class ExpressoesRegularesTest {
             System.out.print(matcher.start() + " ");
         }
     }
-
 }

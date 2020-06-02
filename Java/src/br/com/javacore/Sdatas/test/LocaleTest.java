@@ -21,7 +21,7 @@ public class LocaleTest {
         System.out.println("Suica " + df2.format(c.getTime()));
         System.out.println("India " + df3.format(c.getTime()));
         System.out.println("Japao " + df4.format(c.getTime()));
-        
+
         System.out.println(locItaly.getDisplayLanguage(locJapao));
         System.out.println(locJapao.getDisplayLanguage(locItaly));
         System.out.println(locSuica.getDisplayCountry(locItaly));
