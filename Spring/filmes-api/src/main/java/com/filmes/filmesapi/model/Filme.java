@@ -4,26 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Filme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
+    @NotBlank
+    private String nomeDoFilme = "null";
+    @NotBlank
+    private String descricaoFilme = "null";
 
-    private String nomeDoFilme;
+    private int anoFilme = 0;
 
-    private String descricaoFilme;
+    private String linkImg = "https://img.icons8.com/ios/50/000000/add.png";
 
-    private int anoFilme;
-
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,5 +51,13 @@ public class Filme {
 
     public void setAnoFilme(int anoFilme) {
         this.anoFilme = anoFilme;
+    }
+
+    public String getLinkImg() {
+        return linkImg;
+    }
+
+    public void setLinkImg(String linkImg) {
+        this.linkImg = linkImg;
     }
 }
