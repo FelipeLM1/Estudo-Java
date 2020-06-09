@@ -15,6 +15,10 @@ Repositório criado para salvar códigos e projetos estudados na linguagem Java 
     
 * [Java Core](https://github.com/FelipeLM1/Estudo-Java/tree/master/Java/src/br/com/javacore)  
     - [Introdução Classes](https://github.com/FelipeLM1/Estudo-Java/tree/master/Java/src/br/com/javacore/Aintroducaoclasses)
+    - [Introdução Métodos](https://github.com/FelipeLM1/Estudo-Java/tree/master/Java/src/br/com/javacore/Bintroducaometodos)
+    - [Sobrecarga Métodos](https://github.com/FelipeLM1/Estudo-Java/tree/master/Java/src/br/com/javacore/Csobrecargametodos)
+    - [Sobrecarga Construtores](https://github.com/FelipeLM1/Estudo-Java/tree/master/Java/src/br/com/javacore/Dsobrecargaconstrutores)
+    - [Bloco de Inicialização](https://github.com/FelipeLM1/Estudo-Java/tree/master/Java/src/br/com/javacore/Eblocodeinicializacao)
 
 * [Projetos Spring](https://github.com/FelipeLM1/Estudo-Java/tree/master/Spring)
 
