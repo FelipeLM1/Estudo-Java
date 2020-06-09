@@ -1,9 +1,6 @@
 package com.filmes.filmesapi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -15,6 +12,7 @@ public class Filme {
     @NotBlank
     private String nomeDoFilme = "null";
     @NotBlank
+    @Lob
     private String descricaoFilme = "null";
 
     private int anoFilme = 0;
